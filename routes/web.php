@@ -16,7 +16,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/about', 'PageController@about');
-Route::get('/articles', function () {
-    $articles = App\Article::all();
-    return view('articles', ['articles' => $articles]);
-});
+Route::get('/articles', 'ArticleController@index')->name('articles.index');
