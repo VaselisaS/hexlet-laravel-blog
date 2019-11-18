@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::paginate();
+        $q = $request->input('q');
+        $articles = $q ? Article::where('name', 'like', "%{$q}%")->paginate() : Article::paginate();
 
-        return view('article.index', compact('articles'));
+        return view('article.index', compact('articles', 'q'));
     }
 
     public function show($id)
