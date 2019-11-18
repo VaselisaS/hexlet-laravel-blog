@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('status'))
+        <p>{{session()->get('status')}}</p>
+    @endif
     <h1>Список статей</h1>
     {{Form::open(['url' => route('articles.index'), 'method' => 'GET'])}}
-        {{Form::text('q', $q)}}
-        {{Form::submit('Поиск')}}
+    {{Form::text('q', $q)}}
+    {{Form::submit('Поиск')}}
     {{Form::close()}}
     @foreach($articles as $article)
         <h2><a href="{{route('articles.show', $article)}}">{{$article->name}}</a></h2>
