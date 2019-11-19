@@ -13,6 +13,7 @@
 <div class="container mt-4">
     <a href="{{ route('articles.index') }}">Статьи</a>
     <a href="{{ route('about.index') }}">О нас</a>
+    <a href="{{ route('articles.create') }}">Создать статью</a>
     <h1>@yield('header')</h1>
     <div>
         @yield('content')
